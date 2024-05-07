@@ -1,13 +1,6 @@
-function subsets(nums) {
-  const result = [];
-  backtrack(0, []);
-  return result;
-  function backtrack(start, current) {
-    result.push([...current]);
-    for (let i = start; i < nums.length; i++) {
-      current.push(nums[i]);
-      backtrack(i + 1, current);
-      current.pop();
-    }
+const gcd = (a, b) => {
+  if (b === 0) {
+    return a;
   }
-}
+  return gcd(b, a % b);
+};
