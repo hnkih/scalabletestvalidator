@@ -1,6 +1,6 @@
-const gcd = (a, b) => {
-  if (b === 0) {
-    return a;
+const factorialRecursive = (n) => {
+  if (n === 0 || n === 1) {
+    return 1;
   }
-  return gcd(b, a % b);
+  return n * factorialRecursive(n - 1);
 };
