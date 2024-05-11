@@ -1,16 +1,12 @@
-const radixSort = (arr) => {
-  const getDigit = (num, place) =>
-    Math.floor(Math.abs(num) / Math.pow(10, place)) % 10;
-  const digitCount = (num) =>
-    num === 0 ? 1 : Math.floor(Math.log10(Math.abs(num))) + 1;
-  const mostDigits = (arr) => Math.max(...arr.map((num) => digitCount(num)));
-  const maxDigits = mostDigits(arr);
-  for (let k = 0; k < maxDigits; k++) {
-    let digitBuckets = Array.from({ length: 10 }, () => []);
-    for (let i = 0; i < arr.length; i++) {
-      digitBuckets[getDigit(arr[i], k)].push(arr[i]);
+function lengthOfLIS(nums) {
+  if (nums.length === 0) return 0;
+  const dp = new Array(nums.length).fill(1);
+  let max = 1;
+  for (let i = 1; i < nums.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (nums[i] > nums[j]) dp[i] = Math.max(dp[i], dp[j] + 1);
     }
-    arr = [].concat(...digitBuckets);
+    max = Math.max(max, dp[i]);
   }
-  return arr;
-};
+  return max;
+}
