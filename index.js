@@ -1,10 +1,12 @@
-function mergeKLists(lists) {
-  if (lists.length === 0) return null;
-  while (lists.length > 1) {
-    const first = lists.shift();
-    const second = lists.shift();
-    const merged = mergeTwoLists(first, second);
-    lists.push(merged);
+function insertionSort(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let key = arr[i];
+    let j = i - 1;
+    while (j >= 0 && arr[j] > key) {
+      arr[j + 1] = arr[j];
+      j--;
+    }
+    arr[j + 1] = key;
   }
-  return lists[0];
+  return arr;
 }
